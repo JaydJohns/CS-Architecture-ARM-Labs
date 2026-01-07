@@ -1,6 +1,6 @@
 {
-    "name": "PFW ARM Lab Environment",
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "name": "PFW ARM Lab",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "ghcr.io/devcontainers/features/common-utils:1": {}
     },
