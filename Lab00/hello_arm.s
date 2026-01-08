@@ -1,42 +1,118 @@
 // =============================================================================
-// CS 271 Computer Architecture - Lab 00: Getting Started with ARM Assembly
+// CS 271 Computer Architecture - Lab 00: Introduction to ARM Assembly
 // Purdue University Fort Wayne
 // =============================================================================
 // STUDENT NAME: ___________________
 // DATE:         ___________________
 // =============================================================================
-// OBJECTIVE:
-//   This is your first ARM assembly program! The goal is to verify that your
-//   development environment is working correctly by loading immediate values
-//   into registers and executing the YIELD instruction.
 //
-// EXPECTED OUTCOME:
-//   When the simulation completes successfully, you should see:
-//   "[EDUCORE LOG]: Apollo has landed"
+// LEARNING OBJECTIVES:
+//   After completing this lab, you will be able to:
+//   1. Use the development workflow: Edit → Assemble → Simulate → Verify
+//   2. Write basic ARM64 instructions (MOV, ADD, SUB)
+//   3. Understand register naming (X0-X30 for 64-bit values)
+//   4. Verify your code using waveform analysis
+//   5. Use the YIELD instruction to signal program completion
 //
-// INSTRUCTIONS:
-//   1. Review the code below to understand the syntax
-//   2. Run: make sim_lab00
-//   3. Observe the output in the terminal
-//   4. Open the .vcd file in Surfer to view waveforms
+// =============================================================================
+// PART 1: EXAMPLE CODE (Read and understand this section)
+// =============================================================================
+//
+// ARM64 uses registers X0 through X30 to store 64-bit values.
+// The MOV instruction copies a value INTO a register.
+// The ADD instruction adds two values and stores the result.
+//
+// Syntax examples:
+//   MOV  X0, #42       ; X0 = 42 (the # symbol indicates an immediate value)
+//   ADD  X2, X0, X1    ; X2 = X0 + X1
+//   SUB  X3, X0, X1    ; X3 = X0 - X1
+//
 // =============================================================================
 
     .text
     .global _start
 
 _start:
-    // Load the immediate value 42 (0x2A) into register X0
-    MOV     X0, #42
+    // -------------------------------------------------------------------------
+    // EXAMPLE: Basic arithmetic
+    // -------------------------------------------------------------------------
+    MOV     X0, #10         // X0 = 10
+    MOV     X1, #5          // X1 = 5
+    ADD     X2, X0, X1      // X2 = 10 + 5 = 15
 
-    // Load the immediate value 100 (0x64) into register X1  
-    MOV     X1, #100
+    // =========================================================================
+    // PART 2: YOUR TURN! Complete the exercises below.
+    // =========================================================================
 
-    // Add X0 and X1, store result in X2
-    // Expected: X2 = 42 + 100 = 142 (0x8E)
-    ADD     X2, X0, X1
+    // -------------------------------------------------------------------------
+    // EXERCISE 1: Load a value into X3
+    // -------------------------------------------------------------------------
+    // TODO: Use MOV to load the value 25 into register X3
+    // After this instruction, X3 should equal 25
+    //
+    // YOUR CODE HERE:
 
-    // Signal successful completion to the testbench
-    // The YIELD instruction triggers "Apollo has landed"
+
+    // -------------------------------------------------------------------------
+    // EXERCISE 2: Perform addition
+    // -------------------------------------------------------------------------
+    // TODO: Add X2 and X3, store the result in X4
+    // After this instruction, X4 should equal 40 (because 15 + 25 = 40)
+    //
+    // YOUR CODE HERE:
+
+
+    // -------------------------------------------------------------------------
+    // EXERCISE 3: Perform subtraction
+    // -------------------------------------------------------------------------
+    // TODO: Subtract X1 from X0, store the result in X5
+    // Hint: The syntax is SUB destination, source1, source2
+    // After this instruction, X5 should equal 5 (because 10 - 5 = 5)
+    //
+    // YOUR CODE HERE:
+
+
+    // -------------------------------------------------------------------------
+    // EXERCISE 4: Create your own calculation
+    // -------------------------------------------------------------------------
+    // TODO: Use any combination of MOV, ADD, and SUB to make X6 equal 100
+    // There are many ways to do this! Be creative.
+    // After your code, X6 MUST equal exactly 100 for the autograder to pass.
+    //
+    // YOUR CODE HERE:
+
+
+    // =========================================================================
+    // PROGRAM TERMINATION
+    // =========================================================================
+    // The YIELD instruction signals to the simulator that your program
+    // has completed successfully. DO NOT REMOVE THIS LINE!
     YIELD
 
-    // End of program
+// =============================================================================
+// VERIFICATION CHECKLIST
+// =============================================================================
+// After running 'make sim_lab00', open the waveform viewer (Surfer) and verify:
+//
+//   [ ] X0 = 10  (0x0A in hexadecimal)
+//   [ ] X1 = 5   (0x05)
+//   [ ] X2 = 15  (0x0F)
+//   [ ] X3 = 25  (0x19)  ← Your Exercise 1
+//   [ ] X4 = 40  (0x28)  ← Your Exercise 2
+//   [ ] X5 = 5   (0x05)  ← Your Exercise 3
+//   [ ] X6 = 100 (0x64)  ← Your Exercise 4
+//
+// If you see "[EDUCORE LOG]: Apollo has landed" in the terminal,
+// your program executed without errors!
+//
+// =============================================================================
+// SUBMISSION
+// =============================================================================
+// When you're done, commit and push your changes:
+//
+//   git add .
+//   git commit -m "Completed Lab 00"
+//   git push
+//
+// The autograder will verify that your program runs successfully.
+// =============================================================================
