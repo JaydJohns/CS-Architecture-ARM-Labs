@@ -1,7 +1,23 @@
+# macOS
 .DS_Store
+
+# IDE
 .vscode/
+*.swp
+*.swo
+
+# Build artifacts
+*.o
+*.out
+*.mem
+*.vvp
+*.vcd
+
+# Node (if any)
 node_modules/
 build/
 bin/
-*.o
-*.out
+
+# Temporary files
+~$*
+*.tmp
