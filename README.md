@@ -77,9 +77,12 @@ When you push code, the autograder tests ALL labs. Your current score:
 | Lab 01 - STRCPY | 20 pts | Memory operations and loops |
 | *More labs coming...* | | |
 
+> **💡 Note:** Every push runs ALL lab tests automatically. It's completely normal to see later labs marked as "failed" if you haven't completed them yet. Focus on the lab you're currently working on — the other tests will pass once you complete them!
+
 View your detailed results: Go to **Actions** tab → Click the latest run → See pass/fail for each test.
 
 ---
+
 
 ## 🛠️ Quick Reference
 
