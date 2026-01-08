@@ -26,3 +26,5 @@ bin/
 Professor_Lab_Templates/
 .clauderc
 solutions/
+*.docx
+*.elf

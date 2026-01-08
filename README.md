@@ -21,9 +21,9 @@ Check off each lab as you complete it:
 |-----|-------|--------|--------|
 | Lab 00 | Introduction to ARM Assembly | `Lab00/` | ⬜ Not Started |
 | Lab 01 | String Copy (STRCPY) | `Lab01/` | ⬜ Not Started |
-| Lab 02 | Coming Soon | `Lab02/` | 🔒 Locked |
-| Lab 03 | Coming Soon | `Lab03/` | 🔒 Locked |
-| Lab 04 | Coming Soon | `Lab04/` | 🔒 Locked |
+| Lab 02 | Post-Increment Addressing | `Lab02/` | ⬜ Not Started |
+| Lab 03 | Instruction Exploration | `Lab03/` | ⬜ Not Started |
+| Lab 04 | Pipeline Hazards | `Lab04/` | ⬜ Not Started |
 | Lab 05 | Coming Soon | `Lab05/` | 🔒 Locked |
 | Lab 06 | Coming Soon | `Lab06/` | 🔒 Locked |
 
@@ -75,7 +75,9 @@ When you push code, the autograder tests ALL labs. Your current score:
 |------|--------|-------------|
 | Lab 00 - Introduction | 15 pts | Basic ARM instructions |
 | Lab 01 - STRCPY | 20 pts | Memory operations and loops |
-| *More labs coming...* | | |
+| Lab 02 - Post-Increment | 20 pts | Efficient addressing modes |
+| Lab 03 - Instructions | 15 pts | Instruction analysis |
+| Lab 04 - Pipeline | 30 pts | Pipeline hazards |
 
 > **💡 Note:** Every push runs ALL lab tests automatically. It's completely normal to see later labs marked as "failed" if you haven't completed them yet. Focus on the lab you're currently working on — the other tests will pass once you complete them!
 
@@ -91,6 +93,9 @@ View your detailed results: Go to **Actions** tab → Click the latest run → S
 ```bash
 make sim_lab00   # Run Lab 00 simulation
 make sim_lab01   # Run Lab 01 simulation
+make sim_lab02   # Run Lab 02 simulation
+make sim_lab03   # Run Lab 03 simulation
+make sim_lab04   # Run Lab 04 simulation (pipelined processor)
 make clean       # Remove generated files
 make help        # Show all commands
 ```
