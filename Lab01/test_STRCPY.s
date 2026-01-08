@@ -16,16 +16,15 @@
 //   - The source string is: "Hello" (5 characters + null terminator)
 //
 // EXPECTED OUTCOME:
-//   - Register X0 should hold 0x50 (source address)
-//   - Register X1 should hold 0x13C (destination address)
 //   - The string "Hello" should be copied to the destination
+//   - Your loop should iterate 6 times (5 letters + 1 null terminator)
 //   - Simulation output: "[EDUCORE LOG]: Apollo has landed"
 //
 // INSTRUCTIONS:
-//   1. Complete the TODO sections below
+//   1. Complete the TODO sections below (5 lines of code total)
 //   2. Run: make sim_lab01
-//   3. Open Surfer to verify X0=0x50 and X1=0x13C
-//   4. Check that memory[0x13C] contains the copied string
+//   3. Verify success with "Apollo has landed" message
+//   4. (Optional) Open Surfer to view waveforms
 // =============================================================================
 
     .text
@@ -33,62 +32,82 @@
 
 _start:
     // =========================================================================
-    // STEP 1: Initialize Pointers
+    // STEP 1: Initialize Pointers (Already done for you)
     // =========================================================================
-    // TODO: Load the source address (0x50) into X0
-    // HINT: Use MOV with an immediate value
+    // These lines set up X0 to point to the source string
+    // and X1 to point to the destination buffer.
+    // DO NOT MODIFY these two lines.
     
-    MOV     X0, #0x50       // X0 = source pointer (address 80)
-    
-    // TODO: Load the destination address (0x13C = 316) into X1
-    // HINT: 0x13C is too large for MOV, use MOVZ or load in parts
-    
-    MOV     X1, #0x13C      // X1 = destination pointer (address 316)
+    MOV     X0, #0x50       // X0 = source pointer (address 0x50)
+    MOV     X1, #0x13C      // X1 = destination pointer (address 0x13C)
 
     // =========================================================================
-    // STEP 2: Implement the Copy Loop
+    // STEP 2: Implement the Copy Loop (YOUR CODE GOES HERE)
     // =========================================================================
+    // You need to write 5 instructions inside this loop:
+    //   1. Load a byte from source
+    //   2. Store that byte to destination
+    //   3. Check if it was the null terminator
+    //   4. Increment both pointers
+    //   5. Loop back
+    
 copy_loop:
-    // TODO: Load a byte from the source address [X0] into W2
-    // HINT: Use LDRB (Load Register Byte)
+    // -------------------------------------------------------------------------
+    // TODO #1: Load a byte from the source address [X0] into W2
+    // Syntax: LDRB Wt, [Xn]   (Load Register Byte)
+    // -------------------------------------------------------------------------
     
     // YOUR CODE HERE
     
-    // TODO: Store the byte from W2 to the destination address [X1]
-    // HINT: Use STRB (Store Register Byte)
+    // -------------------------------------------------------------------------
+    // TODO #2: Store the byte from W2 to the destination address [X1]
+    // Syntax: STRB Wt, [Xn]   (Store Register Byte)
+    // -------------------------------------------------------------------------
     
     // YOUR CODE HERE
     
-    // TODO: Check if the byte we just copied was the null terminator (0)
-    // HINT: Use CBZ (Compare and Branch if Zero)
-    
-    // YOUR CODE HERE → branch to 'done' if W2 == 0
-    
-    // TODO: Increment both pointers to the next byte
-    // HINT: ADD X0, X0, #1 advances the source pointer
+    // -------------------------------------------------------------------------
+    // TODO #3: Check if the byte was the null terminator (0)
+    // If W2 == 0, branch to 'done'
+    // Syntax: CBZ Wt, label   (Compare and Branch if Zero)
+    // -------------------------------------------------------------------------
     
     // YOUR CODE HERE
     
-    // TODO: Loop back to copy the next character
-    // HINT: Use B (Branch) instruction
+    // -------------------------------------------------------------------------
+    // TODO #4: Increment both pointers to the next byte
+    // You need TWO ADD instructions (one for X0, one for X1)
+    // Syntax: ADD Xd, Xn, #1
+    // -------------------------------------------------------------------------
     
-    // YOUR CODE HERE → branch back to 'copy_loop'
+    // YOUR CODE HERE (two lines)
+    
+    // -------------------------------------------------------------------------
+    // TODO #5: Loop back to copy the next character
+    // Syntax: B label   (Branch - unconditional jump)
+    // -------------------------------------------------------------------------
+    
+    // YOUR CODE HERE
 
     // =========================================================================
-    // STEP 3: Signal Completion
+    // STEP 3: Signal Completion (Already done for you)
     // =========================================================================
 done:
-    // YIELD tells the testbench we finished successfully
+    // When your loop exits (after copying the null terminator),
+    // execution reaches here and YIELD signals success.
     YIELD
 
 // =============================================================================
-// DATA SECTION
+// DATA SECTION (DO NOT MODIFY)
 // =============================================================================
-    .data
-    .org 0x50               // Place the source string at address 0x50
-source_string:
-    .asciz "Hello"          // Null-terminated string
+// This section defines the source string and destination buffer in memory.
+// The assembler will place "Hello\0" at address 0x50.
 
-    .org 0x13C              // Reserve destination buffer at address 0x13C
+    .data
+    .org 0x50
+source_string:
+    .asciz "Hello"          // "Hello" + null terminator (6 bytes total)
+
+    .org 0x13C
 dest_buffer:
-    .space 16               // 16 bytes of space for the copied string
+    .space 16               // 16 bytes reserved for the copied string
