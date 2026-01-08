@@ -2,88 +2,134 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/JaydJohns/CS-Architecture-ARM-Labs)
 
-## Overview
+## ⚠️ Important: Read This First!
 
-This repository contains the lab assignments for **CS 271 Computer Architecture** at Purdue University Fort Wayne. Students will learn ARM64 assembly programming using the **Arm Education Core (Educore)** processor, simulated in Icarus Verilog.
+This is your **single repository for ALL ARM labs** this semester. You will:
+- Work on each lab in its own folder (Lab00, Lab01, Lab02, etc.)
+- Push your changes after completing each lab
+- See your progress in the **Actions** tab
 
-## Getting Started
+**Do NOT create multiple repositories!** This one repo contains everything you need.
 
-### 1. Open in Codespaces
+---
 
-Click the button above or go to **Code → Codespaces → Create codespace on main**.
+## 📊 Lab Progress Tracker
 
-The environment will automatically install:
-- ARM64 cross-compiler (`gcc-aarch64-linux-gnu`)
-- Icarus Verilog simulator (`iverilog`)
-- Surfer waveform viewer extension
+Check off each lab as you complete it:
 
-### 2. Verify Your Setup
+| Lab | Topic | Folder | Status |
+|-----|-------|--------|--------|
+| Lab 00 | Introduction to ARM Assembly | `Lab00/` | ⬜ Not Started |
+| Lab 01 | String Copy (STRCPY) | `Lab01/` | ⬜ Not Started |
+| Lab 02 | Coming Soon | `Lab02/` | 🔒 Locked |
+| Lab 03 | Coming Soon | `Lab03/` | 🔒 Locked |
+| Lab 04 | Coming Soon | `Lab04/` | 🔒 Locked |
+| Lab 05 | Coming Soon | `Lab05/` | 🔒 Locked |
+| Lab 06 | Coming Soon | `Lab06/` | 🔒 Locked |
 
-After the Codespace finishes building (~2 minutes), run:
+---
+
+## 🚀 Getting Started
+
+### Step 1: Open Your Codespace
+
+Click the green **"Code"** button above, then **"Codespaces"** → **"Create codespace on main"**.
+
+Wait about 2 minutes for the environment to set up. You'll know it's ready when you see a terminal prompt.
+
+### Step 2: Navigate to the Current Lab
+
+Each lab has its own folder with instructions:
+
+```
+Lab00/README.md  ← Start here!
+Lab01/README.md  ← After completing Lab 00
+```
+
+### Step 3: Work on the Lab
+
+1. Open the lab's README for instructions
+2. Edit the `.s` (assembly) file
+3. Run the test command (e.g., `make sim_lab00`)
+4. Verify your results
+
+### Step 4: Submit Your Work
+
+After completing a lab:
 
 ```bash
-make sim_lab00
+git add .
+git commit -m "Completed Lab 00"
+git push
 ```
 
-You should see:
-```
-[EDUCORE LOG]: Test case: Lab00/hello_arm.mem
-[EDUCORE LOG]: Apollo has landed
-```
+The **autograder runs automatically** and shows your score in the **Actions** tab.
 
-## Lab Assignments
+---
 
-| Lab | Topic | File to Edit |
-|-----|-------|--------------|
-| Lab 00 | Getting Started | `Lab00/hello_arm.s` |
-| Lab 01 | String Copy (STRCPY) | `Lab01/test_STRCPY.s` |
+## 📝 Grading
 
-## Quick Reference
+When you push code, the autograder tests ALL labs. Your current score:
 
-### Common Commands
+| Test | Points | Description |
+|------|--------|-------------|
+| Lab 00 - Introduction | 15 pts | Basic ARM instructions |
+| Lab 01 - STRCPY | 20 pts | Memory operations and loops |
+| *More labs coming...* | | |
+
+View your detailed results: Go to **Actions** tab → Click the latest run → See pass/fail for each test.
+
+---
+
+## 🛠️ Quick Reference
+
+### Makefile Commands
 
 ```bash
-# Build and simulate Lab 00
-make sim_lab00
-
-# Build and simulate Lab 01
-make sim_lab01
-
-# Clean all build artifacts
-make clean
-
-# Show all available commands
-make help
+make sim_lab00   # Run Lab 00 simulation
+make sim_lab01   # Run Lab 01 simulation
+make clean       # Remove generated files
+make help        # Show all commands
 ```
 
-### Viewing Waveforms
+### Common Issues
 
-After running a simulation, a `.vcd` file is generated. To view:
+| Problem | Solution |
+|---------|----------|
+| "Command not found" | Wait for Codespace to finish building |
+| "Houston, we got a problem" | Bug in your code — check syntax |
+| Tests failing | Read the error message in Actions tab |
 
-1. Click on the `.vcd` file in the Explorer
-2. It will open in the Surfer waveform viewer
-3. Add signals to trace (e.g., registers, memory)
+---
 
-## Project Structure
+## 📁 Repository Structure
 
 ```
-├── .devcontainer/          # Codespace configuration
-├── Lab00/                  # Getting Started lab
-│   └── hello_arm.s         # Your first ARM program
-├── Lab01/                  # STRCPY lab
-│   ├── test_STRCPY.s       # Lab assignment
-│   └── Educore-SingleCycle/# Verilog processor
-├── Professor_Lab_Templates/# Reference materials (read-only)
-├── Makefile                # Build automation
-└── README.md               # This file
+CS271-ARM-Labs/
+├── Lab00/                    ← Lab 00: Introduction
+│   ├── README.md             ← Lab 00 instructions
+│   └── hello_arm.s           ← Your code goes here
+├── Lab01/                    ← Lab 01: String Copy
+│   ├── README.md             ← Lab 01 instructions
+│   ├── test_STRCPY.s         ← Your code goes here
+│   └── Educore-SingleCycle/  ← Processor simulation files
+├── Makefile                  ← Build commands
+├── CODESPACE_GUIDE.md        ← Environment differences
+└── README.md                 ← This file
 ```
 
-## Getting Help
+---
 
-- Check the **Arm_Education_Core_supported_instructions.xlsx** for instruction reference
-- Review the lab documentation in `Professor_Lab_Templates/`
-- Use the Surfer extension to debug your code visually
+## ❓ Getting Help
 
-## License
+1. Check the lab's README first
+2. Review `CODESPACE_GUIDE.md` for environment help
+3. Ask on the course discussion board
+4. Attend office hours
 
-This project uses the ARM Education Introduction to Computer Architecture Education Kit under the [ARM Education Kit EULA](https://www.arm.com/-/media/Files/pdf/education/computer-architecture-education-kit-eula).
+---
+
+## 📜 License
+
+ARM Education Introduction to Computer Architecture Education Kit  
+[ARM Education Kit EULA](https://www.arm.com/-/media/Files/pdf/education/computer-architecture-education-kit-eula)
